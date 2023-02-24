@@ -8,7 +8,13 @@ Dossier contenant des scripts afin de réaliser une exportation d'Active Directo
 # __** Seul le script RunProgram.py est à exécuter **__
 
 # Utilisation
-Ce program permet soit de comparer 2 matrices soit d'éditer 1 matrice  
+## Utilisation de Powershell
+```
+.\ExportAD.ps1 'DNameDNS'
+```
+
+## Utilisation de python
+Ce programme permet soit de comparer 2 matrices soit d'éditer 1 matrice  
 Pour crée une matrice :
 ``` 
 .\RunProgram.py --Edit 'ADNameDNS'
