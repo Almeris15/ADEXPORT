@@ -25,7 +25,7 @@ $date = Get-Date -Format "yyyyMMdd"
 
 # Define CSV exit
 # The folders must be created on  the server where the script will be executed
-$Path = "C:\SAFEO\FILES\"
+$Path = "C:\"path"\FILES\" # don't forget to change the path
 
 # Name CSV
 $Name_CSV_Groups = $Path + "ADgroups_" + $ADname + "_" + $date + ".csv"
