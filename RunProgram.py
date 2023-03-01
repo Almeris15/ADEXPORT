@@ -11,6 +11,7 @@ import argparse
 import subprocess
 import os
 import datetime
+import sys
 
 # --- Début des variables ---
 dir = os.path.dirname(__file__) # import absolute path
@@ -38,7 +39,11 @@ def Suprimme(csv):
     except FileNotFoundError:
         pass
 # --- Fin des fonctions ---
- 
+
+# install package
+install('pandas')
+install('openpyxl')
+
 parser = argparse.ArgumentParser() # Initialize the argument parser
 parser.add_argument("--Create", help="Name of the output file") # Add an option for the output file
 parser.add_argument("--Compare", help="Name of the output file") # Add an option for the output file

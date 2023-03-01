@@ -15,9 +15,9 @@
 # 1.0.0 - Initial release
 
 import sys
-import subprocess
 import os 
 import datetime
+import pandas as pd
 
 # --- variables ---
 dir = os.path.dirname(__file__) # Emplacement du fichier dans l'ordinateur/serveur
@@ -27,13 +27,6 @@ dirCSV = dir + "\\..\\TEMP\\" # Emplacement du dossier Temp
 # --- Fin des variables ---
 
 # --- Début des fonctions ---
-# Fonctions pour installer les packages nécessaires manquant
-def install(package):
-    subprocess.check_call([sys.executable, "-m", "pip", "install", package]) # install le package s'il n'existe pas
-
-install('pandas')
-import pandas as pd
-
 # Fonction pour choisir le fichier par date
 def FileDate(fileName):
     latest_file_name = None

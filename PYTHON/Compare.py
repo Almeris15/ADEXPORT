@@ -29,7 +29,6 @@ widthsFirst = 20 # widths of the first column
 # ----- Fin des variables -----
 
 # ----- Début des fonctions -----
-
 # Fonction pour appel de fichier
 def Call_files():
     file_names_list= []
@@ -153,7 +152,6 @@ def Compare_table(df1,df2,OutputExcel):
 # ----- Fin des fonctions -----
 
 # Appels aux fonctions
-
 User_file_list, Groups_file_list, GroupMembership_file_list = Call_files()
 
 while len(User_file_list) > 1 : # Quand il y a + qu'un fichier dans la liste de fichier alors comparaison

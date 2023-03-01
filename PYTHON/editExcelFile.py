@@ -9,8 +9,9 @@
 
 import os
 import sys
-import subprocess
 import datetime
+import openpyxl
+from openpyxl.styles import PatternFill, Border, Side, Alignment
 
 # --- Début des Variables ---
 dir = os.path.dirname(__file__) # Emplacement du fichier dans l'ordinateur/serveur
@@ -25,14 +26,7 @@ widthsFirst = 20 # widths of the first column
 # --- Fin de Variables ---
 
 # --- Début des fonctions ---
-# Fonctions pour installer les packages nécessaires manquant
-def install(package):
-    subprocess.check_call([sys.executable, "-m", "pip", "install", package])
 # --- Fin des fonctions ---  
-
-install('openpyxl')
-import openpyxl
-from openpyxl.styles import PatternFill, Border, Side, Alignment
 
 # Open the Excel file
 wb = openpyxl.load_workbook(ExcelFile)
