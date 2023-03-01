@@ -21,6 +21,10 @@ program3 = os.path.join(dir, ".\\PYTHON\\Compare.py")
 # --- Fin des variables ---
 
 # --- Début des fonctions ---
+# Fonctions pour installer les packages nécessaires manquant
+def install(package):
+    subprocess.check_call([sys.executable, "-m", "pip", "install", package])
+    
 # Fonction pour lancer les script Python
 def RunProgram(program):
     print("run du programme ", program)

@@ -10,10 +10,11 @@
 # 1.0.0 - Initial release
 
 import sys
-import subprocess
 import os 
 from collections import defaultdict
 from datetime import datetime
+import pandas as pd
+from openpyxl.styles import PatternFill, Border, Side, Alignment
 
 # ----- Variables -----
 dir = os.path.dirname(__file__) # Emplacement du fichier grâce à son chemin absolue
@@ -28,14 +29,6 @@ widthsFirst = 20 # widths of the first column
 # ----- Fin des variables -----
 
 # ----- Début des fonctions -----
-# Fonctions pour installer les packages nécessaires manquant
-def install(package):
-    subprocess.check_call([sys.executable, "-m", "pip", "install", package])
-
-install('pandas')
-install('openpyxl')
-import pandas as pd
-from openpyxl.styles import PatternFill, Border, Side, Alignment
 
 # Fonction pour appel de fichier
 def Call_files():
