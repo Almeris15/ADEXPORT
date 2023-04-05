@@ -1,10 +1,3 @@
-#NAME : ExportAD.ps1
-#Author : Almeris15
-#Description : Script pour exporter la liste des utilisateurs, les groupes et les membres des groupes au format CSV pour une liste d'OU fourni en paramètre sur un AD
-#  
-# Changelog:
-# 1.0.0 - Initial release
-
 # Import the Active Directory module
 Import-Module ActiveDirectory
 
@@ -25,7 +18,7 @@ $date = Get-Date -Format "yyyyMMdd"
 
 # Define CSV exit
 # The folders must be created on  the server where the script will be executed
-$Path = "C:\"path"\FILES\" # don't forget to change the path
+$Path = "C:\" # don't forget to change the path if you want
 
 # Name CSV
 $Name_CSV_Groups = $Path + "ADgroups_" + $ADname + "_" + $date + ".csv"
