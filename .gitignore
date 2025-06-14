@@ -1,0 +1,6 @@
+# Logs
+PYTHON/__pycache__/
+*.log
+
+*.xls
+*.csv

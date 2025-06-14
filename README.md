@@ -1,96 +1,136 @@
 # ADEXPORT
-Programme contenant des scripts afin de réaliser une exportation d'Active Directory automatiquement et soit crée une matrice soit de comparer 2 matrices issue d'une exportation d'Active Directory.  
-Pour crée/comparé ces matrices il faut dans un premier temps faire un export de l'active directory afin d'obtenir les fichier CSV. L'export des csv est aussi inclu dans le programme.
+[![fr](https://img.shields.io/badge/lang-fr-green.svg)](https://github.com/Almeris15/ADEXPORT/blob/master/README.fr.md)
 
-# Prérequis : 
-- Avoir des accès à un Active Directory pour le script Powershell
-- Avoir Python : version 3.10.9 ou ultérieur
-- Connaître le nom de l'AD en Distinguished Name  --> ADNameDNS
+Program to help for reporting AD member, membership and Groups
+A program containing scripts to automatically export Active Directory and either create a matrix or compare two matrices from an Active Directory export.
+To create/compare these matrices, you must first export the Active Directory to obtain the CSV files. The CSV export is also included in the program.
 
-# __** Seul le script RunProgram.py est à exécuter **__
+---
 
-# Utilisation
-## Utilisation Powershell
+## Prerequisites:
+- Access to an Active Directory for the PowerShell script
+- Python: version 3.10.9 or later
+- Know the AD name in Distinguished Name --> ADNameDNS
+
+---
+
+## Usage
+
+__** Only the RunProgram.py script needs to be run **__
+
+### PowerShell Usage
 ```
 .\ExportAD.ps1 'ADNameDNS'
 ```
-## Utilisation Python
-Ce program permet soit de crée 1 matrice soit de comparer 2 matrices grâce aux csv se trouvant dans le dossier ImportCSV.  
-Pour crée une matrice d'un AD :
-``` 
+
+---
+
+### Python Usage
+This program allows you to either create a matrix or compare two matrices using the csv files located in the ImportCSV folder. To create a matrix from an AD:
+```
 \\path\\python.exe \\path\\RunProgram.py --Create 'ADNameDNS'
 ```
-Pour comparer 2 matrices d'un même AD :
-``` 
+To compare two matrices from the same AD:
+```
 \\path\\python.exe \\path\\RunProgram.py --Compare 'ADNameDNS'
 ```
-Les fichiers CSV d'un même AD sont comparé par date antichronologique  
-Le nombre de fichier Excel de comparaison est donc égal aux nombres de date - 1  
-Quelque soit l'option choisit le résultat est un tableau à double entrée stocké dans un fichier excel est entreposé dans le dossier ExportExcel.  
+CSV files from the same AD are compared by reverse chronological date.
+The number of Excel files to compare is therefore equal to the number of dates - 1.
+Regardless of the option chosen, the result is a double-entry table stored in an Excel file and stored in the ExportExcel folder.
 
-# Arborescence :
-- EXPORT_EXCEL
-    - Fichiers de matrice de sortie en .xlsx
-- IMPORT_CSV
-    - Fichiers CSV
-- POWERSHELL
-    - ExportAD.ps1
-- PYTHON
-    - CSVtoMatriceExcel.py
-    - Compare.py
-    - editExcelFile.py
-    - log_config.py
-- ExportAD.log
-- LICENSE
-- README.md
-- RunProgram.py
+---
 
-Si les dossiers ImportCSV et ExportExcel n'existent pas merci de les crées suivant cette arborescence et la casse dde leurs noms respectifs  
+## 📁File Tree:
 
-# Description de l'arborescence
-## Dossier POWERSHELL
-### ExportAD.ps1
-Script powershell qui fait un export de l'ad et sort 3 csv:
-- 1 pour la liste des groupes - Format : 'ADgroups_ADnameDNS_YYYYMMDD.csv'
-- 1 pour la liste des utilisateurs - Format : 'ADmembers_ADnameDNS_YYYYMMDD.csv'
-- 1 pour la liste utilisateur-groupes - Format : 'ADmembership_ADnameDNS_YYYYMMDD.csv'  
-Penser à passer le nom de L'AD en format DNS (Distinguished Names)
+    ADEXPORT  
+    ├── ExportExcel/  
+        └── Output matrix files in .xlsx  
+    ├── ImportCSV/  
+        └── CSV files  
+    ├── POWERSHELL/  
+        └──ExportAD.ps1  
+    ├── PYTHON/  
+        ├── CSVtoMatriceExcel.py  
+        ├── Compare.py  
+        ├── editExcelFile.py  
+        └── log_config.py    
+    ├── ExportAD.log  
+    ├── LICENSE  
+    ├── README_fr.md  
+    ├── README_en.md  
+    └── RunProgram.py
 
-## Dossier PYTHON
-### CSVtoMatriceExcel.py
-Script qui transforme les csv de l'export powershell en une matrice à double entrée et l'enregistre dans un fichier excel.  
-Variables : 
-- ADNameDNS en argument
+If the ImportCSV and ExportExcel folders do not exist, please create them according to this tree structure and the case of their respective names.
 
-### editExcelFile.py
-Script qui met en forme le fichier excel de sortie du programme CSVtoMatriceExcel.py  
-Variables :
-- ADNameDNS en argument
+---
 
-### Compare.py
-Script qui compare 2 matrices AD groupmembership.  
-On obtient un fichier Excel contenant 1 matrice avec des couleur (vert et rouge) afin de voir rapidemment les différences.  
-Variables : 
-- ADNameDNS en argument
+## Tree structure description
+### POWERSHELL folder
+#### ExportAD.ps1
+PowerShell script that exports the Active Directory and outputs 3 CSV files:
+- 1 for the list of groups - Format: 'ADgroups_ADnameDNS_YYYYMMDD.csv'
+- 1 for the list of users - Format: 'ADmembers_ADnameDNS_YYYYMMDD.csv'
+- 1 for the user-group list - Format: 'ADmembership_ADnameDNS_YYYYMMDD.csv'
+Remember to pass the AD name in DNS (Distinguished Names) format
 
-## Dossier IMPORT_CSV
-Dossier servant à stocker les fichier csv en import pour l'éxécution du programme.
+---
 
-## Dossier EXPORT_EXCEL
-Dossier servant à stocker les fichier excel en sortie d'éxécution du programme.
+### PYTHON File
+#### CSVtoMatriceExcel.py
+Script that transforms the CSV values ​​from the PowerShell export into a two-way matrix and saves it to an Excel file.
+Variables:
+- ADNameDNS as an argument
 
-## RunProgram.py
-Script python à lancer, qui lance tout les script dans l'ordre.  
-Passer en argument les options selon si on veut Editer une Matrice ou Comparer 2 matrice  
-Vérifier que les CSV nécessaire se trouvent dans le Dossier "IMPORT_CSV "  
-Variables : 
-- Noms des Scripts .py
-- ADNameDNS en argument
-- une des Option vu dans la partie 'Utilisation' au dessus
+---
 
-## README.md
-- Descriptions du programme
-- Prérequis
-- Utilisation
-- Arborescence
-- Description des différents dossier et scripts
+#### editExcelFile.py
+Script that formats the Excel file output from the CSVtoMatriceExcel.py program
+Variables:
+- ADNameDNS as an argument
+
+---
+
+#### Compare.py
+Script that compares two AD groupmembership matrices.
+The result is an Excel file containing one matrix with colors (green and red) to quickly see the differences.
+Variables:
+- ADNameDNS as an argument
+
+---
+
+### IMPORT_CSV folder
+Folder used to store the imported CSV files for program execution.
+
+---
+
+### EXPORT_EXCEL folder
+Folder used to store the Excel files output from the program execution.
+
+---
+
+### RunProgram.py
+Python script to run, which launches all the scripts in order.
+
+Pass the options as arguments depending on whether you want to Edit a Matrix or Compare 2 Matrices.
+Check that the necessary CSV files are in the "IMPORT_CSV" folder.
+Variables:
+- Script names.py
+- ADNameDNS as an argument
+- One of the options seen in the 'Usage' section above
+
+---
+
+### README.md
+- Program descriptions
+- Prerequisites
+- Usage
+- Tree structure
+- Description of the different folders and scripts
+
+---
+
+## 📜 License
+
+MIT License – free to use, share, and modify. Contributions welcome!
+
+---

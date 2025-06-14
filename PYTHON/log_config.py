@@ -2,16 +2,16 @@ import logging
 import os
 
 
-# --- Début des variables ---
+# --- Start of variables ---
 dir = os.path.dirname(__file__)
 dirLog = dir + "\\..\\"
 LogFile = os.path.join(dirLog, 'ExportAD.log')
-# --- Fin des variables ---
+# --- End of variables ---
 
 
-# --- Début des fonctions --
+# --- Start of functions --
 def setup_logging():
-    """Setup et configure un fichier de log."""
+    """Setup and configure a log file."""
     logging.basicConfig(
         level=logging.INFO,
         format='%(asctime)s - %(levelname)s - %(name)s - %(message)s',
@@ -19,4 +19,4 @@ def setup_logging():
         filemode='a',
         encoding='utf-8'
         )
-# --- Fin des fonctions ---
+# --- End of functions ---

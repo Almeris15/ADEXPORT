@@ -1,8 +1,8 @@
-# Import the Active Directory module
+# Import Active Directory module
 Import-Module ActiveDirectory
 
 # ----- VARIABLES -----
-# Define Ad Name
+# Define AD Name
 $Adname = $args[0]
 $AD_OU = $Adname.Split('.')
 
@@ -17,7 +17,7 @@ $ous = $ous.TrimEnd(',')
 $date = Get-Date -Format "yyyyMMdd"
 
 # Define CSV exit
-# The folders must be created on  the server where the script will be executed
+# The folders must be created on the server where the script will be executed
 $Path = "C:\" # don't forget to change the path if you want
 
 # Name CSV
